@@ -1,5 +1,5 @@
 let GOOGLE_CLIENT_ID = '1786051934-8qnvo09mieuodq8un7964vll342gf474.apps.googleusercontent.com';
-const API_BASE_URL = 'http://localhost:3000'; // Backend server URL
+const API_BASE_URL = window.location.origin; // Backend server URL
 
 // Initialize Google Sign-In when the page loads
 window.onload = async function() {
@@ -136,7 +136,7 @@ async function handleCredentialResponse(response) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'include', // Include cookies if needed
+            credentials: 'include',
             body: JSON.stringify({
                 token: response.credential
             })

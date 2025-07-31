@@ -27,13 +27,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // MongoDB connection
-mongoose.connect(
-	process.env.MONGODB_URI,
-	{
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	}
-);
+mongoose.connect(process.env.MONGODB_URI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 
 // User Schema
 const userSchema = new mongoose.Schema({
@@ -51,8 +48,7 @@ const User = mongoose.model("User", userSchema);
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // JWT Secret
-const JWT_SECRET =
-	process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware to verify JWT
 const authenticateToken = async (req, res, next) => {
@@ -92,7 +88,7 @@ app.get("/dashboard", (req, res) => {
 	res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 
-// Google OAuth2 verification endpoint
+
 app.post("/auth/google", async (req, res) => {
 	try {
 		const { token } = req.body;
@@ -106,7 +102,7 @@ app.post("/auth/google", async (req, res) => {
 		const payload = ticket.getPayload();
 		const { sub: googleId, email, name, picture } = payload;
 
-		// Find or create user
+		// Find user
 		let user = await User.findOne({ googleId });
 
 		if (!user) {
@@ -118,12 +114,11 @@ app.post("/auth/google", async (req, res) => {
 			});
 			await user.save();
 		} else {
-			// Update last login
 			user.lastLogin = new Date();
 			await user.save();
 		}
 
-		// Generate JWT
+    // jwt generation
 		const jwtToken = jwt.sign(
 			{ userId: user._id, email: user.email },
 			JWT_SECRET,
