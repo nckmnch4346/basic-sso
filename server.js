@@ -17,8 +17,8 @@ app.use(
 			"http://localhost:5500",
 			"http://127.0.0.1:3000",
 			"http://127.0.0.1:5500",
-			"https://nmenchero.wmdd.com",
-			"http://nmenchero.wmdd.com",
+			"https://nmenchero.wmdd4950.com",
+			"http://nmenchero.wmdd4950.com",
 		],
 		credentials: true,
 	})
@@ -28,7 +28,7 @@ app.use(express.static("public"));
 
 // MongoDB connection
 mongoose.connect(
-	process.env.MONGODB_URI || "mongodb://localhost:27017/oauth_app",
+	process.env.MONGODB_URI,
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
@@ -52,8 +52,7 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // JWT Secret
 const JWT_SECRET =
-	process.env.JWT_SECRET ||
-	"your-super-secret-jwt-key-change-this-in-production";
+	process.env.JWT_SECRET;
 
 // Middleware to verify JWT
 const authenticateToken = async (req, res, next) => {
@@ -169,7 +168,7 @@ app.post("/api/logout", authenticateToken, (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-	console.log(`Server running on http://localhost:${PORT}`);
+	console.log(`Server running on ${PORT}`);
 });
 
 module.exports = app;
