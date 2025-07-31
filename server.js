@@ -88,7 +88,6 @@ app.get("/dashboard", (req, res) => {
 	res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 
-
 app.post("/auth/google", async (req, res) => {
 	try {
 		const { token } = req.body;
@@ -118,7 +117,7 @@ app.post("/auth/google", async (req, res) => {
 			await user.save();
 		}
 
-    // jwt generation
+		// jwt generation
 		const jwtToken = jwt.sign(
 			{ userId: user._id, email: user.email },
 			JWT_SECRET,

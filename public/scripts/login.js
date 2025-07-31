@@ -162,7 +162,6 @@ async function handleCredentialResponse(response) {
 			console.log("Auth successful:", data);
 
 			if (data.success && data.token) {
-                
 				// Store token and user data
 				localStorage.setItem("token", data.token);
 				localStorage.setItem("user", JSON.stringify(data.user));
