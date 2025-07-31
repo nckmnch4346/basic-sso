@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dashboard - OAuth2 App</title>
+		<script src="scripts/dashboard.js" async defer></script>
+		<link rel="stylesheet" href="styles/dashboard.css" />
+	</head>
+	<body>
+		<header class="header">
+			<nav class="nav">
+				<div class="logo">OAuth2 Project</div>
+			</nav>
+		</header>
+
+		<div class="container">
+			<div class="loading" id="loading">
+				<div class="spinner"></div>
+				<div>Loading your dashboard...</div>
+			</div>
+
+			<div class="error" id="errorMessage" style="display: none"></div>
+
+			<div id="dashboardContent" style="display: none">
+				<section class="welcome-section">
+					<h1 class="welcome-title">Welcome back!</h1>
+					<div class="profile-avatar-section">
+						<img
+							class="large-avatar"
+							id="profileAvatar"
+							alt="Profile Picture"
+						/>
+						<h3 id="profileDisplayName"></h3>
+						<p style="color: #666; margin-top: 0.5rem">Google Account</p>
+						<button class="logout-btn" onclick="logout()">Logout</button>
+					</div>
+				</section>
+
+				<div class="stats-grid">
+					<div class="stat-card">
+						<div class="stat-icon">🔐</div>
+						<div class="stat-value">JWT</div>
+						<div class="stat-label">Authentication Method</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-icon">⚡</div>
+						<div class="stat-value" id="daysSinceJoined">0</div>
+						<div class="stat-label">Days Since Joined</div>
+					</div>
+				</div>
+
+				<section class="profile-section">
+					<h2 class="section-title">Profile Information</h2>
+					<div class="profile-grid">
+						<div class="profile-info">
+							<div class="info-item">
+								<span class="info-label">Full Name:</span>
+								<span class="info-value" id="profileName"></span>
+							</div>
+							<div class="info-item">
+								<span class="info-label">Email Address:</span>
+								<span class="info-value" id="profileEmail"></span>
+							</div>
+							<div class="info-item">
+								<span class="info-label">Account Created:</span>
+								<span class="info-value" id="profileCreated"></span>
+							</div>
+							<div class="info-item">
+								<span class="info-label">Last Login:</span>
+								<span class="info-value" id="profileLastLogin"></span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</body>
+</html>

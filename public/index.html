@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login - OAuth2 Dashboard</title>
+		<script src="https://accounts.google.com/gsi/client" async defer></script>
+        <link rel="stylesheet" href="styles/styles.css" />
+        <script src="scripts/login.js" defer></script>
+	</head>
+	<body>
+		<div class="login-container">
+			<div class="logo">🚀</div>
+			<h1>Welcome Back</h1>
+			<p class="subtitle">Sign in to access your dashboard</p>
+
+			<div class="error" id="errorMessage"></div>
+
+			<div class="google-signin-container">
+				<!-- Google Sign-In button will be rendered here by JavaScript -->
+				<div id="google-signin-placeholder">
+					<div style="text-align: center; padding: 2rem; color: #666">
+						Loading Google Sign-In...
+					</div>
+				</div>
+			</div>
+
+			<div class="loading" id="loading">
+				<div class="spinner"></div>
+				<span>Signing you in...</span>
+			</div>
+
+			<div class="features">
+				<h3>What's the content:</h3>
+				<ul>
+					<li>Secure authentication with Google</li>
+					<li>Personalized dashboard</li>
+					<li>JWT-based session management</li>
+					<li>Profile information sync</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
