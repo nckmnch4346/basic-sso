@@ -1,4 +1,4 @@
-const API_BASE_URL = window.location.origin; // Backend server URL
+const API_BASE_URL = 'http://localhost:3000'; // Backend server URL
 
 // Check authentication on page load
 window.onload = function () {

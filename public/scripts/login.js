@@ -1,6 +1,5 @@
-// Remove hardcoded client ID - fetch from backend instead
-let GOOGLE_CLIENT_ID = null;
-const API_BASE_URL = window.location.origin; // Backend server URL
+let GOOGLE_CLIENT_ID = '1786051934-8qnvo09mieuodq8un7964vll342gf474.apps.googleusercontent.com';
+const API_BASE_URL = 'http://localhost:3000'; // Backend server URL
 
 // Initialize Google Sign-In when the page loads
 window.onload = async function() {
